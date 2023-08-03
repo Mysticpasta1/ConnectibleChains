@@ -16,6 +16,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.ChainBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraftforge.common.MinecraftForge;
@@ -79,6 +80,7 @@ public class ConnectibleChains {
         BlockPos blockPos = hitResult.getBlockPos();
         BlockState block = world.getBlockState(blockPos);
 
+        if(stack.getItem() != Items.CHAIN) return;
         if (!ChainKnotEntity.canAttachTo(block)) return;
         if (world.isClientSide) {
             Item handItem = player.getItemInHand(hand).getItem();
